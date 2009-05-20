@@ -1,0 +1,8 @@
+Crossdresser is a bridge between the dual-spec system and the default equipment manager.
+With it you can link an equipment set to a talent spec, and that set will automatically be equipped when the talent spec is activated.
+
+h2. Links
+
+<b>Visit "my site":http://www.tekkub.net/ for more great addons.<br>
+Please report all bugs and feature requests to my "Github tracker":http://github.com/tekkub/Crossdresser/issues<br>
+Please direct all feedback and questions to my "Google Groups":http://groups-beta.google.com/group/tekkub-wow mailinglist.</b>
