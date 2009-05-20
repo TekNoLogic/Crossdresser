@@ -1,0 +1,23 @@
+## Interface: 30000
+
+## Title: Crossdresser
+## Notes: Template for creating new addons
+## Author: Tekkub Stoutwrithe
+## Version: Alpha
+## X-Website: http://www.tekkub.net/
+## X-Email: tekkub-wow@googlegroups.com
+## X-Category: Misc
+
+## SavedVariables: CrossdresserDB
+## SavedVariablesPerCharacter: CrossdresserDBPC
+
+## OptionalDeps: tekDebug, tekErr
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Always: delayed
+## X-LoadOn-Slash: /crossdresser
+
+LibStub.lua
+tekKonfigAboutPanel.lua
+
+Crossdresser.lua
