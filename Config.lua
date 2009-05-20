@@ -9,7 +9,7 @@ frame:SetScript("OnShow", function(frame)
 	local ICONSIZE = (frame:GetWidth() - EDGEGAP*4 - GAP*9) / 10
 	local Update
 
-	local title, subtitle = LibStub("tekKonfig-Heading").new(frame, "Crossdresser", "This panel allows you to select which equipment sets Crossdresser will use.")
+	local title, subtitle = LibStub("tekKonfig-Heading").new(frame, "Crossdresser", "This panel allows you to select which equipment set to use with each talent spec.  Hover over a group label to view spec details.")
 
 
 	local function OnClick(self)
@@ -24,6 +24,10 @@ frame:SetScript("OnShow", function(frame)
 	end
 	local function HideTooltip() GameTooltip:Hide() end
 
+	-- Load the talent UI and force a spec update, so our tooltips have data
+	if not IsAddOnLoaded("Blizzard_TalentUI") then LoadAddOn("Blizzard_TalentUI") end
+	PlayerTalentTab_GetBestDefaultTab("spec1")
+	PlayerTalentTab_GetBestDefaultTab("spec2")
 
 	local groups = {}
 	for g=1,2 do
@@ -31,6 +35,13 @@ frame:SetScript("OnShow", function(frame)
 		group:SetHeight(EDGEGAP*2 + ICONSIZE)
 		group:SetPoint("LEFT", EDGEGAP, 0)
 		group:SetPoint("RIGHT", -EDGEGAP, 0)
+
+		local hoverframe = CreateFrame("Button", nil, group)
+		hoverframe:SetPoint("BOTTOMLEFT", group, "TOPLEFT", 16, 0)
+		hoverframe:SetWidth(120) hoverframe:SetHeight(12)
+		hoverframe:SetScript("OnEnter", PlayerSpecTab_OnEnter)
+		hoverframe:SetScript("OnLeave", HideTooltip)
+		hoverframe.specIndex = "spec"..g
 
 		group.buttons = {}
 		for i=1,10 do
