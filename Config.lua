@@ -86,3 +86,15 @@ end)
 InterfaceOptions_AddCategory(frame)
 
 LibStub("tekKonfig-AboutPanel").new("Crossdresser", "Crossdresser")
+
+
+local function f() InterfaceOptionsFrame_OpenToCategory(frame) end
+local a1, a2 = -30, -6
+for _,parent in pairs{GearManagerDialog, PlayerTalentFrame} do
+	local butt = LibStub("tekKonfig-Button").new_small(parent, "TOPRIGHT", a1, a2)
+	butt:SetText("CD")
+	butt:SetWidth(25)
+	butt:SetHeight(18)
+	butt:SetScript("OnCLick", f)
+	a1, a2 = -60, -15
+end
