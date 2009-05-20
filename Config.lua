@@ -100,12 +100,25 @@ LibStub("tekKonfig-AboutPanel").new("Crossdresser", "Crossdresser")
 
 
 local function f() InterfaceOptionsFrame_OpenToCategory(frame) end
-local a1, a2 = -30, -6
-for _,parent in pairs{GearManagerDialog, PlayerTalentFrame} do
+local function MakeButt(parent, a1, a2)
 	local butt = LibStub("tekKonfig-Button").new_small(parent, "TOPRIGHT", a1, a2)
 	butt:SetText("CD")
 	butt:SetWidth(25)
 	butt:SetHeight(18)
-	butt:SetScript("OnCLick", f)
-	a1, a2 = -60, -15
+	butt:SetScript("OnClick", f)
+end
+
+MakeButt(GearManagerDialog, -30, -6)
+
+if IsAddOnLoaded("Blizzard_TalentUI") then
+	MakeButt(PlayerTalentFrame, -60, -15)
+else
+	frame:SetScript("OnEvent", function(self, event, addon)
+		if addon ~= "Blizzard_TalentUI" then return end
+		self:SetScript("OnEvent", nil)
+		self:UnregisterEvent("ADDON_LOADED")
+
+		MakeButt(PlayerTalentFrame, -60, -15)
+	end)
+	frame:RegisterEvent("ADDON_LOADED")
 end
