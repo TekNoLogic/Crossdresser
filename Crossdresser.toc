@@ -1,7 +1,7 @@
 ## Interface: 30000
 
 ## Title: Crossdresser
-## Notes: Template for creating new addons
+## Notes: Dual-spec equipment set switcher
 ## Author: Tekkub Stoutwrithe
 ## Version: Alpha
 ## X-Website: http://www.tekkub.net/
