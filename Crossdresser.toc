@@ -8,7 +8,6 @@
 ## X-Email: tekkub-wow@googlegroups.com
 ## X-Category: Misc
 
-## SavedVariables: CrossdresserDB
 ## SavedVariablesPerCharacter: CrossdresserDBPC
 
 ## OptionalDeps: tekDebug, tekErr
@@ -21,3 +20,4 @@ LibStub.lua
 tekKonfigAboutPanel.lua
 
 Crossdresser.lua
+Config.lua
