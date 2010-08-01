@@ -42,14 +42,14 @@ end
 local lastgroup
 function f:PLAYER_LOGIN()
 	lastgroup = GetActiveTalentGroup()
-	self:RegisterEvent("PLAYER_TALENT_UPDATE")
+	self:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 
 	self:UnregisterEvent("PLAYER_LOGIN")
 	self.PLAYER_LOGIN = nil
 end
 
 
-function f:PLAYER_TALENT_UPDATE()
+function f:ACTIVE_TALENT_GROUP_CHANGED()
 	if lastgroup == GetActiveTalentGroup() then return end
 
 	lastgroup = GetActiveTalentGroup()
