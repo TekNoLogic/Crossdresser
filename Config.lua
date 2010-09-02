@@ -1,4 +1,7 @@
 
+local myname, ns = ...
+ns.IHASCAT = select(4, GetBuildInfo()) >= 40000
+
 local NUMROWS, NUMCOLS, GAP, EDGEGAP = 2, 5, 8, 16
 local ICONSIZE = 32
 
@@ -110,15 +113,17 @@ end
 
 MakeButt(GearManagerDialog, -30, -6)
 
+local x, y = -5, -23
+if not ns.IHASCAT then x, y = -60, -30 end
 if IsAddOnLoaded("Blizzard_TalentUI") then
-	MakeButt(PlayerTalentFrame, -60, -15)
+	MakeButt(PlayerTalentFrame, x, y)
 else
 	frame:SetScript("OnEvent", function(self, event, addon)
 		if addon ~= "Blizzard_TalentUI" then return end
 		self:SetScript("OnEvent", nil)
 		self:UnregisterEvent("ADDON_LOADED")
 
-		MakeButt(PlayerTalentFrame, -60, -15)
+		MakeButt(PlayerTalentFrame, x, y)
 	end)
 	frame:RegisterEvent("ADDON_LOADED")
 end
