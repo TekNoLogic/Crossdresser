@@ -29,8 +29,10 @@ frame:SetScript("OnShow", function(frame)
 
 	-- Load the talent UI and force a spec update, so our tooltips have data
 	if not IsAddOnLoaded("Blizzard_TalentUI") then LoadAddOn("Blizzard_TalentUI") end
-	PlayerTalentTab_GetBestDefaultTab("spec1")
-	PlayerTalentTab_GetBestDefaultTab("spec2")
+	if not ns.IHASCAT then
+		PlayerTalentTab_GetBestDefaultTab("spec1")
+		PlayerTalentTab_GetBestDefaultTab("spec2")
+	end
 
 	local groups = {}
 	for g=1,2 do
@@ -77,6 +79,14 @@ frame:SetScript("OnShow", function(frame)
 
 
 	function Update()
+		if ns.IHASCAT then
+			local primary, secondary = GetPrimaryTalentTree(nil, nil, 1), GetPrimaryTalentTree(nil, nil, 2)
+			local primary_name = primary and (" |cffffffff(".. select(2, GetTalentTabInfo(primary)).. ")") or ""
+			local secondary_name = secondary and (" |cffffffff(".. select(2, GetTalentTabInfo(secondary)).. ")") or ""
+			groups[1].label:SetText("Primary Talent Set".. primary_name)
+			groups[2].label:SetText("Secondary Talent Set".. secondary_name)
+		end
+
 		for i,group in pairs(groups) do
 			for _,butt in pairs(group.buttons) do
 				local name, tex = GetEquipmentSetInfo(butt.i)
