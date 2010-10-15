@@ -1,6 +1,5 @@
 
 local myname, ns = ...
-ns.IHASCAT = select(4, GetBuildInfo()) >= 40000
 
 local NUMROWS, NUMCOLS, GAP, EDGEGAP = 2, 5, 8, 16
 local ICONSIZE = 32
@@ -29,10 +28,6 @@ frame:SetScript("OnShow", function(frame)
 
 	-- Load the talent UI and force a spec update, so our tooltips have data
 	if not IsAddOnLoaded("Blizzard_TalentUI") then LoadAddOn("Blizzard_TalentUI") end
-	if not ns.IHASCAT then
-		PlayerTalentTab_GetBestDefaultTab("spec1")
-		PlayerTalentTab_GetBestDefaultTab("spec2")
-	end
 
 	local groups = {}
 	for g=1,2 do
@@ -79,13 +74,11 @@ frame:SetScript("OnShow", function(frame)
 
 
 	function Update()
-		if ns.IHASCAT then
-			local primary, secondary = GetPrimaryTalentTree(nil, nil, 1), GetPrimaryTalentTree(nil, nil, 2)
-			local primary_name = primary and (" |cffffffff(".. select(2, GetTalentTabInfo(primary)).. ")") or ""
-			local secondary_name = secondary and (" |cffffffff(".. select(2, GetTalentTabInfo(secondary)).. ")") or ""
-			groups[1].label:SetText("Primary Talent Set".. primary_name)
-			groups[2].label:SetText("Secondary Talent Set".. secondary_name)
-		end
+		local primary, secondary = GetPrimaryTalentTree(nil, nil, 1), GetPrimaryTalentTree(nil, nil, 2)
+		local primary_name = primary and (" |cffffffff(".. select(2, GetTalentTabInfo(primary)).. ")") or ""
+		local secondary_name = secondary and (" |cffffffff(".. select(2, GetTalentTabInfo(secondary)).. ")") or ""
+		groups[1].label:SetText("Primary Talent Set".. primary_name)
+		groups[2].label:SetText("Secondary Talent Set".. secondary_name)
 
 		for i,group in pairs(groups) do
 			for _,butt in pairs(group.buttons) do
@@ -124,7 +117,6 @@ end
 MakeButt(GearManagerDialog, -30, -6)
 
 local x, y = -5, -23
-if not ns.IHASCAT then x, y = -60, -30 end
 if IsAddOnLoaded("Blizzard_TalentUI") then
 	MakeButt(PlayerTalentFrame, x, y)
 else
