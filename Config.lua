@@ -118,14 +118,14 @@ MakeButt(GearManagerDialog, -30, -6)
 
 local x, y = -5, -23
 if IsAddOnLoaded("Blizzard_TalentUI") then
-	MakeButt(PlayerTalentFrame, x, y)
+	MakeButt(PlayerTalentFrameTalents, x, y)
 else
 	frame:SetScript("OnEvent", function(self, event, addon)
 		if addon ~= "Blizzard_TalentUI" then return end
 		self:SetScript("OnEvent", nil)
 		self:UnregisterEvent("ADDON_LOADED")
 
-		MakeButt(PlayerTalentFrame, x, y)
+		MakeButt(PlayerTalentFrameTalents, x, y)
 	end)
 	frame:RegisterEvent("ADDON_LOADED")
 end
