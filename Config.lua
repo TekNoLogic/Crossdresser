@@ -114,9 +114,9 @@ local function MakeButt(parent, a1, a2)
 	butt:SetScript("OnClick", f)
 end
 
-MakeButt(GearManagerDialog, -30, -6)
+MakeButt(PaperDollFrame, -5, -23)
 
-local x, y = -5, -23
+local x, y = -26, -2
 if IsAddOnLoaded("Blizzard_TalentUI") then
 	MakeButt(PlayerTalentFrameTalents, x, y)
 else
