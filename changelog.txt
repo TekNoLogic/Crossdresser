@@ -1,3 +1,6 @@
+4.1.0.5-Release
+    Tweak config access buttons for new frame layouts in 4.1
+
 4.0.0.4-Release
     Fix talent panel button parent so it doesn't show on glyph panel
 
