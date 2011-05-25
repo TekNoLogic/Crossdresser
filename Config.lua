@@ -4,6 +4,8 @@ local myname, ns = ...
 local NUMROWS, NUMCOLS, GAP, EDGEGAP = 2, 5, 8, 16
 local ICONSIZE = 32
 
+if AddonLoader and AddonLoader.RemoveInterfaceOptions then AddonLoader:RemoveInterfaceOptions("Crossdresser") end
+
 local frame = CreateFrame("Frame", nil, InterfaceOptionsFramePanelContainer)
 frame.name = "Crossdresser"
 frame:Hide()

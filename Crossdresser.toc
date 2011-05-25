@@ -15,6 +15,7 @@
 ## LoadManagers: AddonLoader
 ## LoadWith: Blizzard_TalentUI
 ## X-LoadOn-Always: delayed
+## X-LoadOn-InterfaceOptions: Crossdresser
 ## X-LoadOn-Execute: CreateFrame("Frame", nil, CharacterFrame):SetScript("OnShow", function(self) LoadAddOn('Crossdresser'); self:SetScript("OnShow", nil) end)
 
 tekKonfig\tekKonfig.xml
