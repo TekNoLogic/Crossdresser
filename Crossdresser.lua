@@ -62,6 +62,6 @@ function f:ACTIVE_TALENT_GROUP_CHANGED()
 	if not found then return Print("Cannot find set:", name) end
 
 	Debug("Equipping set", name)
-	EquipmentManager_EquipSet(name)
+	UseEquipmentSet(name)
 end
 
