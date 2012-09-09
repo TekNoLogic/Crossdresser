@@ -76,9 +76,10 @@ frame:SetScript("OnShow", function(frame)
 
 
 	function Update()
-		local primary, secondary = GetPrimaryTalentTree(nil, nil, 1), GetPrimaryTalentTree(nil, nil, 2)
-		local primary_name = primary and (" |cffffffff(".. select(2, GetTalentTabInfo(primary)).. ")") or ""
-		local secondary_name = secondary and (" |cffffffff(".. select(2, GetTalentTabInfo(secondary)).. ")") or ""
+		-- GetActiveSpecGroup
+		local primary, secondary = GetSpecialization(nil, nil, 1), GetSpecialization(nil, nil, 2)
+		local primary_name = primary and (" |cffffffff(".. select(2, GetSpecializationInfo(primary)).. ")") or ""
+		local secondary_name = secondary and (" |cffffffff(".. select(2, GetSpecializationInfo(secondary)).. ")") or ""
 		groups[1].label:SetText("Primary Talent Set".. primary_name)
 		groups[2].label:SetText("Secondary Talent Set".. secondary_name)
 
@@ -120,14 +121,14 @@ MakeButt(PaperDollFrame, -5, -23)
 
 local x, y = -26, -2
 if IsAddOnLoaded("Blizzard_TalentUI") then
-	MakeButt(PlayerTalentFrameTalents, x, y)
+	MakeButt(PlayerTalentFrame, x, y)
 else
 	frame:SetScript("OnEvent", function(self, event, addon)
 		if addon ~= "Blizzard_TalentUI" then return end
 		self:SetScript("OnEvent", nil)
 		self:UnregisterEvent("ADDON_LOADED")
 
-		MakeButt(PlayerTalentFrameTalents, x, y)
+		MakeButt(PlayerTalentFrame, x, y)
 	end)
 	frame:RegisterEvent("ADDON_LOADED")
 end
