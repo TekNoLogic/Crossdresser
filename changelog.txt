@@ -1,3 +1,7 @@
+5.0.1.6-Beta
+    Fixes for 5.0
+    Add support for AddonLoader's LoadOn-InterfaceOptions thingy
+
 4.1.0.5-Release
     Tweak config access buttons for new frame layouts in 4.1
 
