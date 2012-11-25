@@ -1,3 +1,6 @@
+5.0.1.7-Release
+    Tagging release version
+
 5.0.1.6-Beta
     Fixes for 5.0
     Add support for AddonLoader's LoadOn-InterfaceOptions thingy
